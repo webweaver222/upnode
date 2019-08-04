@@ -1,0 +1,28 @@
+body {
+  margin: 0;
+}
+body header {
+  padding: 30px;
+  background-color: red;
+  overflow: hidden;
+}
+body header h2 {
+  font-size: 22px;
+  float: left;
+  margin: 0 0 0 40px;
+}
+body header ul {
+  float: right;
+  list-style-type: none;
+  margin: 0 40px 0 0;
+}
+body header ul li {
+  display: inline-block;
+  margin: 0 7px 0 0;
+}
+body header ul li a {
+  text-decoration: none;
+  color: black;
+}
+
+/*# sourceMappingURL=style.css.map */
