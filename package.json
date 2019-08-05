@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "concurrently \"nodemon ./bin/www --js,hbs\" \"sass --watch public/main.sass:public/stylesheets/style.css\""
+    "start": "node bin/www",
+    "_comment": "concurrently \"nodemon ./bin/www --js,hbs\" \"sass --watch public/main.sass:public/stylesheets/style.css\""
+
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
