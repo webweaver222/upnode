@@ -1,9 +1,43 @@
 body {
-  background-image: url("/images/99499.jpg");
   background-size: cover;
   margin: 0;
   width: 100%;
   font-family: sans-serif;
+}
+body #video-bg {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+body #video-bg video {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.9;
+}
+body button {
+  margin-top: 15px;
+  display: inline-block;
+  border: 1px solid black;
+  color: black;
+  text-decoration: none;
+  background-color: #aaffff;
+  padding: 12px 33px;
+  font-size: 16px;
+  text-transform: uppercase;
+  border-radius: 15px;
+  text-align: center;
+  position: relative;
+  outline: none;
+  transition: background-color 0.1s ease;
+  cursor: pointer;
+}
+body button:hover {
+  background-color: #44ffff;
 }
 body .menu-container {
   display: flex;
@@ -11,50 +45,113 @@ body .menu-container {
   align-items: center;
   height: 100vh;
 }
-body .menu-container .menu {
+body .menu-container .flip-container {
+  width: 440px;
+  height: 320px;
+  position: relative;
+  perspective: 1000px;
+}
+body .menu-container .flip-container .back-arrow {
+  display: none;
+  position: absolute;
+  font-size: 19px;
+  top: 10px;
+  left: 10px;
+  color: #aaffff;
+  cursor: pointer;
+  z-index: 1;
+}
+body .menu-container .flip-container .back-arrow:hover {
+  color: white;
+}
+body .menu-container .flip-container .theflip {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+body .menu-container .flip-container .theflip .signup, body .menu-container .flip-container .theflip .signin, body .menu-container .flip-container .theflip .menu {
+  color: #aaffff;
+  position: absolute;
   background-color: rgba(0, 0, 0, 0.5);
-  padding: 20px;
+  height: 100%;
+  width: 100%;
   border: 2px solid black;
   border-radius: 20px;
+  backface-visibility: hidden;
   text-align: center;
 }
-body .menu-container .menu h1 {
+body .menu-container .flip-container .theflip .signin {
+  transform: rotateY(180deg);
+}
+body .menu-container .flip-container .theflip .signup {
+  transform: rotateY(180deg);
+}
+body .menu-container .flip-container .theflip .signup, body .menu-container .flip-container .theflip .signin {
+  display: flex;
+}
+body .menu-container .flip-container .theflip .signup form, body .menu-container .flip-container .theflip .signin form {
+  margin: auto;
+  text-align: left;
+}
+body .menu-container .flip-container .theflip .signup form input, body .menu-container .flip-container .theflip .signin form input {
+  display: block;
+  border-radius: 10px;
+  border: 2px solid #aaffff;
+  margin: 5px 0 10px 0;
+  padding: 5px 10px;
+  width: 250px;
+}
+body .menu-container .flip-container .theflip .signup form button, body .menu-container .flip-container .theflip .signin form button {
+  display: block;
+  margin: 20px auto 0 auto;
+}
+body .menu-container .flip-container .theflip .menu h1, body .menu-container .flip-container .theflip .menu h2, body .menu-container .flip-container .theflip .menu ul {
+  margin: 10px 20px 0 20px;
+}
+body .menu-container .flip-container .theflip .menu h1 {
   color: white;
   font-size: 25px;
   letter-spacing: 2px;
 }
-body .menu-container .menu h2 a {
-  color: darkgray;
+body .menu-container .flip-container .theflip .menu h2 {
+  margin-top: 110px;
+}
+body .menu-container .flip-container .theflip .menu h2 a {
+  color: #aaffff;
   font-size: 20px;
   text-transform: uppercase;
   letter-spacing: 1px;
   text-decoration: none;
 }
-body .menu-container .menu h2 a:hover {
+body .menu-container .flip-container .theflip .menu h2 a:hover {
   color: white;
 }
-body .menu-container ul {
+body .menu-container .flip-container .theflip .menu ul {
   padding: 0;
+  overflow: hidden;
+  margin-top: 100px;
 }
-body .menu-container ul li {
+body .menu-container .flip-container .theflip .menu ul li {
   list-style-type: none;
 }
-body .menu-container ul li a {
+body .menu-container .flip-container .theflip .menu ul li a {
   text-decoration: none;
   color: #aaffff;
   font-size: 17px;
   padding: 5px 7px;
 }
-body .menu-container ul li a:hover {
+body .menu-container .flip-container .theflip .menu ul li a:hover {
   text-decoration: underline;
 }
-body .menu-container ul li.up {
+body .menu-container .flip-container .theflip .menu ul li.up {
   float: left;
-  margin: 0 0 0 5px;
+  margin-left: 20px;
 }
-body .menu-container ul li.in {
+body .menu-container .flip-container .theflip .menu ul li.in {
   float: right;
-  margin: 0 5px 0 0;
+  margin-right: 20px;
 }
 body footer {
   background-color: #333333;
