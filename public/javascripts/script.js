@@ -8,7 +8,8 @@ var ready = (callback) => {
   ready(() => { 
     console.log('hello form client js');
 
-    document.getElementById('vid').play();
+   
+   
 
     let flip   = document.querySelector(".theflip").style;
     let upside = document.querySelector(".signup");
@@ -61,6 +62,12 @@ var ready = (callback) => {
 
       
       back_arrow.style.display = 'none';
+
+      
   });
 
+  
+  signup_form();
+
+ 
   });

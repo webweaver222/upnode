@@ -10,8 +10,9 @@
 </head>
 <body>
     <div id="video-bg">
-        <video id = "vid" autoplay="autoplay" loop>
+        <video id = "vid" autoplay muted loop>
             <source src="/vid/rain.mp4" type="video/mp4">
+            <source src="/vid/rain.ogg" type="video/ogg">
         </video>
     </div>
 
@@ -30,32 +31,32 @@
         </div>
 
         <div class="signup">
-            <form action="#">
+            <form action="" method="post">
                 <label for="email">Email</label>
-                <input id = "email" type="text" name="email" required>
+                <input class = "email" type="text" name="email" >
 
                 <label for="username">Username</label>
-                <input id = "username" type="text" name="username">
+                <input class = "username" type="text" name="username">
 
                 <label for="password">Password</label>
-                <input id = "password" type="password" name="password" required>
+                <input class = "password" type="password" name="password" >
 
                 <label for="password2">Confirm Password</label>
-                <input id = "password2" type="password" name="password2" required>
+                <input class = "password2" type="password" name="password2" >
 
-                <button type="submit">Sign Up</button>
+                <button class='submit' type="submit" >Sign Up</button>
             </form>
         </div>
 
         <div class="signin">
-            <form action="#">
+            <form action="" method="post">
                 <label for="email">Email</label>
-                <input id = "email" type="text" name="email" required>
+                <input class = "email" type="text" name="email" >
 
                 <label for="password">Password</label>
-                <input id = "password" type="password" name="password" required>
+                <input class = "password" type="password" name="password" >
 
-                 <button type="submit">Sign In</button>
+                 <button class='submit' type="submit"  onclick="e.preventDefault()" >Sign In</button>
             </form>
         </div>
         
@@ -67,6 +68,7 @@
     
     {{>footer}}
 
-    <script src="/javascripts/script.js"></script>
+    <script  src="/javascripts/script.js"></script>
+    <script  src="/javascripts/forms.js"></script>
 </body>
 </html>
