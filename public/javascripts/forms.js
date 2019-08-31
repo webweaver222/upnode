@@ -23,7 +23,11 @@ function signup_form() {
                   user:  userData
               })
             }).then(res=>res.json())
-              .then(res => console.log(res));
+              .then(res => {
+                console.log(res)
+                document.querySelector(".notif").innerText = res.word;
+                document.querySelector(".back-arrow").dispatchEvent(new Event("click"));
+              });
             
   
            

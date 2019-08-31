@@ -47,7 +47,7 @@ body .menu-container {
 }
 body .menu-container .flip-container {
   width: 440px;
-  height: 320px;
+  height: 340px;
   position: relative;
   perspective: 1000px;
 }
@@ -110,6 +110,12 @@ body .menu-container .flip-container .theflip .signup form button, body .menu-co
 body .menu-container .flip-container .theflip .menu h1, body .menu-container .flip-container .theflip .menu h2, body .menu-container .flip-container .theflip .menu ul {
   margin: 10px 20px 0 20px;
 }
+body .menu-container .flip-container .theflip .menu p {
+  position: absolute;
+  left: 148px;
+  color: white;
+  font-size: 13px;
+}
 body .menu-container .flip-container .theflip .menu h1 {
   color: white;
   font-size: 25px;
@@ -131,7 +137,7 @@ body .menu-container .flip-container .theflip .menu h2 a:hover {
 body .menu-container .flip-container .theflip .menu ul {
   padding: 0;
   overflow: hidden;
-  margin-top: 100px;
+  margin-top: 120px;
 }
 body .menu-container .flip-container .theflip .menu ul li {
   list-style-type: none;

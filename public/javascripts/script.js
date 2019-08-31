@@ -23,6 +23,7 @@ var ready = (callback) => {
         inside.style.display = 'none';
         setTimeout(() => {
           back_arrow.style.display = 'inline';
+          document.querySelector(".notif").innerText = '';
         }, 600)
          
         
