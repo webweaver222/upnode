@@ -1,7 +1,7 @@
-const mongoose = require('mongoose')
+const DB = require('../DB/connect')
 
 
-const User = mongoose.model('User', {
+const User = DB.mongoose.model('User', {
     email: {
         type: String
     },

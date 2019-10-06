@@ -1,18 +1,16 @@
 
-
-const db = function() {
-    
-this.mongoose = require('mongoose')
-
-   
-    
-    this.mongoose.connect('mongodb://127.0.0.1:27017/upnode-api', {
+const DB = {
+    mongoose : require('mongoose'),
+    conn: function () {
+        this.mongoose.connect('mongodb://127.0.0.1:27017/upnode-api', {
         useNewUrlParser: true,
         useCreateIndex: true
     })
-    console.log('connected')
+    console.log('db connected')
+    }
+
+
+ 
 }
+    module.exports = DB
 
-
-    module.exports = db
-    

@@ -1,9 +1,8 @@
-const db= require('./connect') // connection
 const User = require('../models/User') // User model
 
-const dbconn = new db();
-
 const DBuser = {
+
+    
 
    save: function (userData) {
        return new Promise((resolve, reject) => {
@@ -15,34 +14,23 @@ const DBuser = {
             resolve(x);
         })
         .catch((error) => {
+            console.log('343434')
             reject(error)
         })
        })
-   }
-    /*save: function(userData) {
-        const user = new User({email, username, password} = userData) // destr user object
-        
-        
-        user.save()
-        .then(()=>{
-            return user;
+   },
+
+   fetchByEmail: function(email) {
+      return new Promise((resolve, reject) => {
+       
+        User.find({ 'email': email }).then(user => {
+            if (!user[0]) return reject('That email does not exist')
+            resolve(user[0]);
         })
-        .catch((error) => {
-            //console.log('Error', error)
-        })
-    },
-
-    find: function() {
-
-    },
-
-    update: function() {
-
-    },
-
-    delete: function() {
-
-    }*/
+        
+      })
+  }
+    
 
 }
 

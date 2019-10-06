@@ -5,27 +5,38 @@ function signup_form() {
         form.addEventListener('submit', e => {
             e.preventDefault();
             let submForm = e.target.elements
+
+            /* frontend data validation goes here... */
             
+            let postType = 'signin'
+
             let userData = {
               email: submForm.email.value,
-              username: submForm.username.value,
               password: submForm.password.value,
-              repass: submForm.password2.value
             }
+
+            if (submForm.up) {
+              userData.username = submForm.username.value
+              userData.repass = submForm.password2.value
+              postType = 'signup'
+            }
+            
   
-            fetch('/signup', {
+            fetch('/sign', {
               method: 'post',
               headers: {
                 'Accept': 'application/json, text/plain, */*',
                 'Content-Type': 'application/json'
               },
               body: JSON.stringify({
-                  user:  userData
+                  user:  userData,
+                  postType: postType
+
               })
             }).then(res=>res.json())
               .then(res => {
                 console.log(res)
-                document.querySelector(".notif").innerText = res.word;
+                //document.querySelector(".notif").innerText = res.username;
                 document.querySelector(".back-arrow").dispatchEvent(new Event("click"));
               });
             
