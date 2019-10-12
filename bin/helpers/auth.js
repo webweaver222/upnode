@@ -1,23 +1,24 @@
 const DBuser = require('../../database/DB/DBuser')
+const bcrypt = require('bcryptjs')
 
 
 const auth = {
 
 
-    attempt: async function(userData,req) {
+    attempt: async function(userData) {
 
     try {
         let user = await DBuser.fetchByEmail(userData.email);
-        if (user.password == userData.password) {
-            req.session.cookie.obema = '333';
-                return true;
-            }
-        else  throw new Error('Password is incorrect')
+        
+        
+        if (await bcrypt.compare(userData.password, user.password) ) {
+            const token = await user.generateAuthToken()    
+            return token;
+        }
+        else  throw 'Password is incorrect'
     } catch (e) {
         throw new Error(e)
-    }
-            
-        
+      }  
     }
 
 }

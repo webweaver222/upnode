@@ -15,20 +15,24 @@ router.post('/',  async function(req, res, next) {
     if (req.body.postType == 'signup') {
         try {
             let user = await DBuser.save(userData)
-            res.send(user)
-        } catch (e) {
-            console.log(e)
+            const token = await user.generateAuthToken()
+            res.send({user, token})
+        } catch (error) {
+            res.json(error.message)
         }
         
 
     } else if (req.body.postType == 'signin') {
        
         try {
-            let authSuccess = await auth.attempt(userData, req)
-            if (!authSuccess) console.log('fail to auth')
-                else console.log('success to auth')
-        } catch (e) {
-            console.log(e)
+            let token = await auth.attempt(userData)
+            if (!token) console.log('fail to auth')
+                else {
+                    console.log('success to auth')
+                    res.send({token})
+                }
+        } catch (error) {
+            res.json(error.message)
         }
         
     

@@ -1,23 +1,17 @@
 const User = require('../models/User') // User model
 
+
 const DBuser = {
 
     
 
-   save: function (userData) {
-       return new Promise((resolve, reject) => {
+   save: async function (userData) {
 
-        const user = new User({email, username, password} = userData) // destr user object
-        
-        user.save()
-        .then((x)=>{
-            resolve(x);
-        })
-        .catch((error) => {
-            console.log('343434')
-            reject(error)
-        })
-       })
+       const user = new User({email, username, password} = userData) // destr user object
+
+       let doc = await user.save()
+       return doc
+
    },
 
    fetchByEmail: function(email) {
