@@ -11,9 +11,9 @@ const auth = {
         let user = await DBuser.fetchByEmail(userData.email);
         
         
-        if (await bcrypt.compare(userData.password, user.password) ) {
+        if (await bcrypt.compare(userData.password, user.password) ) { // to not hash already hashed pass
             const token = await user.generateAuthToken()    
-            return token;
+            return {user, token};
         }
         else  throw 'Password is incorrect'
     } catch (e) {

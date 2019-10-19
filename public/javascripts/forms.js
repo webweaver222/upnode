@@ -1,5 +1,6 @@
 
 function signup_form() {
+  
     document.querySelectorAll("form").forEach((form, i, array) => { 
     
         form.addEventListener('submit', e => {
@@ -35,8 +36,21 @@ function signup_form() {
               })
             }).then(res=>res.json())
               .then(res => {
-                console.log(res)
-                //document.querySelector(".notif").innerText = res.username;
+        
+                
+                document.querySelectorAll("div.menu ul li").forEach(li => { li.style.display = "none" })
+                var notification = document.createElement("div")
+                
+              
+          
+                notification.textContent = `Hello, ${res.user.username}. You have been loged in successfully`
+                logout = '<li class="in"><a href="#">Log Out</a></li>';
+
+                notification.classList.add("notif")
+                //document.querySelector("div.menu").appendChild(notification);
+                
+                
+
                 document.querySelector(".back-arrow").dispatchEvent(new Event("click"));
               });
             

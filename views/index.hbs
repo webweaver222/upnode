@@ -7,6 +7,8 @@
     <title>UpNode</title>
     <link rel="stylesheet" href="/stylesheets/style.css">
     <link rel="stylesheet" href="/stylesheets/flip.css">
+    <script  src="/javascripts/script.js"></script>
+    <script  src="/javascripts/forms.js"></script>
 </head>
 <body>
     <div id="video-bg">
@@ -25,10 +27,16 @@
             <h1>Welcome to the UpNode.loc</h1>
             <p class="notif"></p>
             <h2><a href="#">Upload File</a></h2>
+            {{#if theUser}}
+                <ul>
+                     <li class="in"><a href="#">Log Out</a></li>
+                </ul>
+            {{else}}
             <ul>
                 <li class="up"><a href="#">Sign Up</a></li>
                 <li class="in"><a href="#">Sign In</a></li>
             </ul>
+             {{/if}}
         </div>
 
         <div class="signup">
@@ -62,7 +70,11 @@
                 <input type="hidden" name="in">
 
                  <button class='submit' type="submit"  onclick="e.preventDefault()" >Sign In</button>
+
+                 
             </form>
+
+           
         </div>
         
         </div>
@@ -71,9 +83,10 @@
         
     </div>
     
+   {{theUser}}
+   
     {{>footer}}
 
-    <script  src="/javascripts/script.js"></script>
-    <script  src="/javascripts/forms.js"></script>
+    
 </body>
 </html>

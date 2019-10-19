@@ -159,6 +159,9 @@ body .menu-container .flip-container .theflip .menu ul li.in {
   float: right;
   margin-right: 20px;
 }
+body .menu-container .flip-container .theflip .menu .notif {
+  color: red;
+}
 body footer {
   background-color: #333333;
   color: white;
