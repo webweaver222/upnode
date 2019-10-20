@@ -1,5 +1,10 @@
 
-function signup_form() {
+/*var ready = (callback) => {
+  if (document.readyState != "loading") callback();
+  else document.addEventListener("DOMContentLoaded", callback);
+}
+
+ready(() => { */
   
     document.querySelectorAll("form").forEach((form, i, array) => { 
     
@@ -37,18 +42,24 @@ function signup_form() {
             }).then(res=>res.json())
               .then(res => {
         
-                
-                document.querySelectorAll("div.menu ul li").forEach(li => { li.style.display = "none" })
-                var notification = document.createElement("div")
-                
-              
-          
-                notification.textContent = `Hello, ${res.user.username}. You have been loged in successfully`
-                logout = '<li class="in"><a href="#">Log Out</a></li>';
+                let list = document.querySelector("div.menu ul")
+                list.querySelectorAll("li").forEach(li => { li.style.display = "none" })
 
-                notification.classList.add("notif")
-                //document.querySelector("div.menu").appendChild(notification);
+                let logout = document.createElement('li')
+                logout.classList.add("out")
+                logout.innerHTML = '<a href="#">Log Out</a>'
+                list.appendChild(logout)
+
+                document.querySelector(".out").addEventListener("click", (e) => { 
+       
+                  flip.transform = 'rotateY(180deg)';
+                  upside.style.display = 'none';
+                  setTimeout(() => {
+                    back_arrow.style.display = 'inline';
+                  }, 400)
                 
+              });
+
                 
 
                 document.querySelector(".back-arrow").dispatchEvent(new Event("click"));
@@ -59,4 +70,6 @@ function signup_form() {
         })
       
      })
-}
+     
+//});
+

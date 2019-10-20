@@ -1,15 +1,6 @@
 
 
-var ready = (callback) => {
-    if (document.readyState != "loading") callback();
-    else document.addEventListener("DOMContentLoaded", callback);
-  }
-  
-  ready(() => { 
     console.log('hello form client js');
-
-   
-   
 
     let flip   = document.querySelector(".theflip").style;
     let upside = document.querySelector(".signup");
@@ -41,6 +32,10 @@ var ready = (callback) => {
       
     });
 
+    
+    
+
+
     back_arrow.addEventListener("click", (e) => { 
 
       if (inside.style.display == 'none') {
@@ -65,10 +60,6 @@ var ready = (callback) => {
       back_arrow.style.display = 'none';
 
       
-  });
-
+    })
   
-  signup_form();
-
- 
-  });
+    
