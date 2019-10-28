@@ -6,8 +6,10 @@
     let upside = document.querySelector(".signup");
     let inside = document.querySelector(".signin");
     let back_arrow   = document.querySelector(".back-arrow")
+    
 
 
+    if (document.querySelector(".up")) {
     document.querySelector(".up").addEventListener("click", (e) => { 
         
         flip.transform = 'rotateY(180deg)';
@@ -20,10 +22,12 @@
         
 
         
-    });
+    });}
 
+
+    if (document.querySelector(".in")) {
     document.querySelector(".in").addEventListener("click", (e) => { 
-       
+        e.preventDefault()
         flip.transform = 'rotateY(180deg)';
         upside.style.display = 'none';
         setTimeout(() => {
@@ -31,10 +35,7 @@
         }, 400)
       
     });
-
-    
-    
-
+  }
 
     back_arrow.addEventListener("click", (e) => { 
 
@@ -62,4 +63,26 @@
       
     })
   
+
+    if (document.querySelector(".out")) {
+     document.querySelector(".out").addEventListener("click", (e) => { 
+      
+      e.preventDefault()
+      logOut()
+
+      let list = document.querySelector("div.menu ul")
+
+      list.removeChild(list.querySelector('li'))
+
+    let signup = document.createElement('li')
+    signup.classList.add("up")
+    signup.innerHTML = '<a href="#">Sign Up</a>'
+    list.appendChild(signup)
+
+    let signin = document.createElement('li')
+    signin.classList.add("in")
+    signin.innerHTML = '<a href="#">Sign In</a>'
+    list.appendChild(signin)
     
+  });
+}

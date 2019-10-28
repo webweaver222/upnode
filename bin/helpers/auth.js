@@ -1,11 +1,10 @@
-const DBuser = require('../../database/DB/DBuser')
 const bcrypt = require('bcryptjs')
 
 
 const auth = {
 
 
-    attempt: async function(userData) {
+    attempt: async function(userData, DBuser) {
 
     try {
         let user = await DBuser.fetchByEmail(userData.email);

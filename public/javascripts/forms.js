@@ -1,10 +1,4 @@
 
-/*var ready = (callback) => {
-  if (document.readyState != "loading") callback();
-  else document.addEventListener("DOMContentLoaded", callback);
-}
-
-ready(() => { */
   
     document.querySelectorAll("form").forEach((form, i, array) => { 
     
@@ -42,27 +36,7 @@ ready(() => { */
             }).then(res=>res.json())
               .then(res => {
         
-                let list = document.querySelector("div.menu ul")
-                list.querySelectorAll("li").forEach(li => { li.style.display = "none" })
-
-                let logout = document.createElement('li')
-                logout.classList.add("out")
-                logout.innerHTML = '<a href="#">Log Out</a>'
-                list.appendChild(logout)
-
-                document.querySelector(".out").addEventListener("click", (e) => { 
-       
-                  flip.transform = 'rotateY(180deg)';
-                  upside.style.display = 'none';
-                  setTimeout(() => {
-                    back_arrow.style.display = 'inline';
-                  }, 400)
-                
-              });
-
-                
-
-                document.querySelector(".back-arrow").dispatchEvent(new Event("click"));
+                afterSignIn()
               });
             
   
@@ -71,5 +45,3 @@ ready(() => { */
       
      })
      
-//});
-

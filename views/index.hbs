@@ -28,12 +28,15 @@
             <h2><a href="#">Upload File</a></h2>
             {{#if theUser}}
                 <ul>
-                     <li class="out"><a href="#">Log Out</a></li>
+                    <li class="up" style="display:none;"><a href="#">Sign Up</a></li>
+                    <li class="in" style="display:none;"><a href="#">Sign In</a></li>
+                    <li class="out" style="display:block"><a href="#">Log Out</a></li>
                 </ul>
             {{else}}
             <ul>
-                <li class="up"><a href="#">Sign Up</a></li>
-                <li class="in"><a href="#">Sign In</a></li>
+                <li class="up" style="display:block;"><a href="#">Sign Up</a></li>
+                <li class="in" style="display:block;"><a href="#">Sign In</a></li>
+                <li class="out" style="display:none"><a href="#">Log Out</a></li>
             </ul>
              {{/if}}
         </div>
@@ -85,8 +88,10 @@
   
    
     {{>footer}}
-<script  src="/javascripts/script.js"></script>
+    <script  src="/javascripts/otherscripts.js"></script>
+    <script  src="/javascripts/script.js"></script>
     <script  src="/javascripts/forms.js"></script>
+    
     
 </body>
 </html>

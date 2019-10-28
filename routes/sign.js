@@ -19,7 +19,7 @@ router.post("/", async function(req, res, next) {
     }
   } else if (req.body.postType == "signin") {
     try {
-      let authRes = await auth.attempt(userData);
+      let authRes = await auth.attempt(userData, DBuser);
       if (!auth) console.log("fail to auth");
       else {
         console.log("success to auth");
