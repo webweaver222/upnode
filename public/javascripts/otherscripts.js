@@ -1,6 +1,6 @@
 
 function afterSignIn() {
-    let list = document.querySelector("div.menu ul")
+    /*let list = document.querySelector("div.menu ul")
     list.querySelectorAll("li").forEach(li => {
         li.style.display = "none"
     })
@@ -23,11 +23,15 @@ function afterSignIn() {
             li.style.display = "block"
         })
 
+
+
     });
 
+*/
 
-
-
+    document.querySelector(".up").style.display = "none"
+    document.querySelector(".in").style.display = "none"
+    document.querySelector(".out").style.display = "block"
 
     document.querySelector(".back-arrow").dispatchEvent(new Event("click"));
 
