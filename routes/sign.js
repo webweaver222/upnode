@@ -8,13 +8,15 @@ const v = require('../bin/helpers/validation')
 router.post("/", async function(req, res, next) {
   let userData = req.body.user; // save data form client to user obj
 
-  /* backend data validation goes here... 
   
-  let validationErrors = v.validate(userData, DBuser)
+  
+  v.validate(userData, req.body.postType, DBuser)
 
-  if (validationErrors) res.send(validationErrors)
+  if (v.errors.length > 0) {
+    return res.send({errors: v.errors})
+  }
   
-  */
+  
 
   if (req.body.postType == "signup") {
     try {
@@ -27,12 +29,12 @@ router.post("/", async function(req, res, next) {
   } else if (req.body.postType == "signin") {
     try {
       let authRes = await auth.attempt(userData, DBuser);
-      if (!auth) console.log("fail to auth");
-      else {
-        res.cookie('user', authRes.token).send({user: authRes.user})
-      }
+
+      res.cookie('user', authRes.token).send({user: authRes.user})
+      
     } catch (error) {
-      res.json(error.message);
+      
+      res.json({errors: error.message})
     }
 
    

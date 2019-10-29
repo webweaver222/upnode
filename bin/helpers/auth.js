@@ -14,7 +14,10 @@ const auth = {
             const token = await user.generateAuthToken()    
             return {user, token};
         }
-        else  throw 'Password is incorrect'
+        
+        else  
+            throw 'Password is incorrect'
+    
     } catch (e) {
         throw new Error(e)
       }  

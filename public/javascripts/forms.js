@@ -33,11 +33,15 @@
                   postType: postType
 
               })
-            }).then(res=>res.json())
-              .then(res => {
-        
-                afterSignIn()
-              });
+            }).then(res => res.json())
+              .then(data => {
+              
+                console.log(data.errors)
+              if (!data.errors) afterSignIn()
+              
+            })
+            
+              
             
   
            

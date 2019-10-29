@@ -13,7 +13,7 @@ else {
         })
         await req.user.save()
     
-        res.clearCookie("user").send({})
+        res.clearCookie("user").end()
     } catch(e) {
         res.status(500).send({error: e})
     }

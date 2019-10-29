@@ -18,7 +18,9 @@ const DBuser = {
       return new Promise((resolve, reject) => {
        
         User.find({ 'email': email }).then(user => {
-            if (!user[0]) return reject('That email does not exist')
+            if (!user[0]) {
+              return reject('That email does not exist')
+            }
             resolve(user[0]);
         })
         
