@@ -12,8 +12,9 @@ router.post("/", async function(req, res, next) {
   
   v.validate(userData, req.body.postType, DBuser)
 
-  if (v.errors.length > 0) {
-    return res.send({errors: v.errors})
+  if (Object.keys(v.errors).length  > 0) {
+    console.log(v.errors)
+    return res.send({errors : v.errors })
   }
   
   

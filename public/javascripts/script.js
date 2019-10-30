@@ -60,12 +60,17 @@ back_arrow.addEventListener("click", (e) => {
 document.querySelector(".out").addEventListener("click", (e) => {
 
   e.preventDefault()
+
+  document.querySelector(".signup form").reset()
+  document.querySelector(".signin form").reset()
+
   logOut()
 
   document.querySelector(".out").style.display = "none"
   document.querySelector(".up").style.display = "block"
   document.querySelector(".in").style.display = "block"
 
+  
 
 });
 

@@ -3,16 +3,27 @@ const validator = require('validator')
 
 let v = {
 
-    errors: [],
+    errors : {},
 
-    validate: function (userData, postType, DBUser) {
+    validate: async function (userData, postType, DBUser) {
 
-        this.errors = []
+        this.errors = {}
 
-        validator.isEmail(userData.email)? '' : this.errors.push('Email is not valid')
 
-        validator.isEmpty(userData.password)? this.errors.push('No password provided') : ''
-        
+        /*if (!this.errors.hasOwnProperty('email')) this.errors['email'] = []
+        validator.isEmail(userData.email)? '' : this.errors['email'].push('Email is not valid')
+
+        validator.isEmpty(userData.password)? this.errors['password'].push('No password provided') : ''
+
+        if (postType == 'signup') {
+            validator.isEmpty(userData.username)? this.errors['username'].push('No username provided') : ''
+            validator.isEmpty(userData.repass)? this.errors['repass'].push('No password provided') : ''
+
+            const em = await DBUser.fetchByEmail(userData.email)
+            console.log(em)
+        }*/
+
+
 
     }
 }
