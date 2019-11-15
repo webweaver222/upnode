@@ -11,7 +11,6 @@ body
         right: 0
         bottom: 0
         left: 0
-        overflow:hidden
         video 
             top: 0
             left: 0
@@ -42,6 +41,19 @@ body
         justify-content: center
         align-items: center
         height: 100vh
+        flex-direction: column
+        .error-notif
+            position: relative
+            z-index: 2
+            background-color: rgb(0,0,0)
+            width: 440px
+            text-align: center
+            margin: 30px 0 0 0
+            padding: 20px 0
+            color: red
+            opacity: 0
+            border-radius: 20px
+            border: 1.5px solid red
         .flip-container
             width: 440px
             height: 340px
@@ -84,13 +96,35 @@ body
                     form
                         margin: auto
                         text-align: left
-                        input
-                            display: block
-                            border-radius: 10px
-                            border: 2px solid $accent
-                            margin: 5px 0 10px 0
-                            padding: 5px 10px
-                            width: 250px
+                        .field-container
+                            position: relative
+                            input
+                                display: block
+                                border-radius: 10px
+                                border: 2px solid $accent
+                                margin: 5px 0 10px 0
+                                padding: 5px 10px
+                                width: 250px
+                                position: relative
+                            input.errored
+                                border: 2px solid red 
+                            ul
+                              background-color: rgba(245, 12, 12, .4)
+                              border: black solid 1px
+                              border-radius: 10px
+                              margin:0
+                              padding: 10px 20px
+                              top: 60%
+                              left: 100%
+                              width: 50%
+                              position: absolute 
+                              transition: opacity .5s ease
+                              opacity: 0
+                              li
+                                  list-style-type: none
+                                  color: black
+                                  font-size: 14px
+                                  padding-bottom: 7px 
                         button
                             display: block 
                             margin: 20px auto 0 auto
@@ -138,13 +172,16 @@ body
                             margin-right: 20px
                     .notif
                         color: red
+
+    
     footer
-        background-color: #333333
+        position: relative
+        background-color: rgba(0,0,0, 0.5)
         color: white
         font-size: 14px
         padding: 25px 0 25px 100px
         z-index: 1
-        //positon: relative
+        
 @media only screen and (max-width: 600px)
      .flip-container
          width: 100px

@@ -17,7 +17,7 @@
 
             if (submForm.up) {
               userData.username = submForm.username.value
-              userData.repass = submForm.password2.value
+              userData.repass = submForm.repass.value
               postType = 'signup'
             }
             
@@ -36,8 +36,11 @@
             }).then(res => res.json())
               .then(data => {
               
-                console.log(data.errors)
-              if (!data.errors) afterSignIn()
+              if (!data.errors) {
+                afterSignIn()
+              } else {
+                  validationFail(data)
+                }
               
             })
             
@@ -49,3 +52,4 @@
       
      })
      
+    

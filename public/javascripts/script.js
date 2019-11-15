@@ -37,6 +37,7 @@ back_arrow.addEventListener("click", (e) => {
 
     setTimeout(() => {
       inside.style.display = 'flex'
+     
     }, 400)
 
   } else {
@@ -45,12 +46,14 @@ back_arrow.addEventListener("click", (e) => {
 
     setTimeout(() => {
       upside.style.display = 'flex'
+      
     }, 400)
 
   }
 
-
+  clearErrors()
   back_arrow.style.display = 'none';
+
 
 
 })

@@ -43,18 +43,22 @@
 
         <div class="signup">
             <form action="" method="post">
-                <label for="email">Email</label>
-                <input class = "email" type="text" name="email" >
-
-                <label for="username">Username</label>
-                <input class = "username" type="text" name="username">
-
-                <label for="password">Password</label>
-                <input class = "password" type="password" name="password" >
-
-                <label for="password2">Confirm Password</label>
-                <input class = "password2" type="password" name="password2" >
-
+                <div class="field-container">
+                    <label for="email">Email</label>
+                    <input  type="text" name="email" >
+                </div>
+                <div class="field-container">
+                    <label for="username">Username</label>
+                    <input type="text" name="username">
+                </div>
+                <div class="field-container">
+                    <label for="password">Password</label>
+                    <input  type="password" name="password" >
+                </div>
+                <div class="field-container">
+                    <label for="password2">Confirm Password</label>
+                    <input  type="password" name="repass" >
+                </div>
                 <input type="hidden" name="up">
 
                 <button class='submit' type="submit" >Sign Up</button>
@@ -63,12 +67,14 @@
 
         <div class="signin">
             <form action="" method="post">
-                <label for="email">Email</label>
-                <input class = "email" type="text" name="email" >
-
-                <label for="password">Password</label>
-                <input class = "password" type="password" name="password" >
-
+                <div class="field-container">
+                    <label for="email">Email</label>
+                    <input class = "email" type="text" name="email" >
+                </div>
+                 <div class="field-container">
+                    <label for="password">Password</label>
+                    <input class = "password" type="password" name="password" >
+                </div>
                 <input type="hidden" name="in">
 
                  <button class='submit' type="submit"  onclick="e.preventDefault()" >Sign In</button>
@@ -81,7 +87,8 @@
         
         </div>
         </div>
-            
+
+        
         
     </div>
     
