@@ -17,12 +17,15 @@ function validationFail(data) {
   if (!document.querySelector('.error-notif')) {
     const notif = document.createElement('div')
     notif.className = 'error-notif'
-    notif.innerText = "Validation error"
+
+   
+     notif.innerText = "Validation error"
+
     document.querySelector('.menu-container').appendChild(notif)
 
-    fadeIn(notif, 700)
+    fadeIn(notif, '0.4' , '700')
   }
-
+  
   const targetForm = document.querySelector(`.${data.postType}`)
   let fields = targetForm.getElementsByTagName('input')
 
@@ -73,10 +76,10 @@ async function logOut() {
 }
 
 
-const fadeIn = (element, duration) => {
+const fadeIn = (element, opacity, duration) => {
   (function increment(value = 0) {
       element.style.opacity = String(value);
-      if (element.style.opacity !== '0.4') {
+      if (element.style.opacity !== opacity) {
           setTimeout(() => {
               increment(value + 0.1);
           }, duration / 10);
@@ -106,6 +109,10 @@ function clearErrors () {
 
 }
 
+function clearDropZone () {
+  document.querySelector('.dropzone')
+}
+
 let opacity1 = function (e) {
   e.target.nextElementSibling.style.opacity = '1'
  }
@@ -113,3 +120,14 @@ let opacity1 = function (e) {
  let opacity0 = function (e) {
   e.target.nextElementSibling.style.opacity = '0'
  }
+
+function uploadCancel () {
+  const dropzone = document.querySelector('.dropzone')
+  dropzone.querySelector('p').innerText = ''
+
+  if (dropzone.querySelector('button'))
+  dropzone.removeChild(dropzone.querySelector('button'))
+
+  dropzone.querySelector('span').innerText = 'Drop your file here'
+}
+

@@ -1,0 +1,17 @@
+0. heroku keys:add
+1 . heroku create adon-nodezon-app 
+
+
+
+
+
+
+
+
+
+
+
+
+/////
+
+cd ~/mongodb/bin

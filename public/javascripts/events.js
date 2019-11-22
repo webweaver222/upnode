@@ -11,10 +11,13 @@ document.querySelector(".up").addEventListener("click", (e) => {
 
   flip.transform = 'rotateY(180deg)';
   inside.style.display = 'none';
+  
   setTimeout(() => {
     back_arrow.style.display = 'inline';
     document.querySelector(".notif").innerText = '';
-  }, 600)
+    document.querySelector('.dropzone').style.display = 'none'
+    uploadCancel()
+  }, 200)
 });
 
 
@@ -23,9 +26,12 @@ document.querySelector(".in").addEventListener("click", (e) => {
   e.preventDefault()
   flip.transform = 'rotateY(180deg)';
   upside.style.display = 'none';
+  
   setTimeout(() => {
     back_arrow.style.display = 'inline';
-  }, 400)
+    document.querySelector('.dropzone').style.display = 'none'
+    uploadCancel()
+  }, 200)
 });
 
 
@@ -37,7 +43,7 @@ back_arrow.addEventListener("click", (e) => {
 
     setTimeout(() => {
       inside.style.display = 'flex'
-     
+      document.querySelector('.dropzone').style.display = 'inline-block'
     }, 400)
 
   } else {
@@ -46,7 +52,7 @@ back_arrow.addEventListener("click", (e) => {
 
     setTimeout(() => {
       upside.style.display = 'flex'
-      
+      document.querySelector('.dropzone').style.display = 'inline-block'
     }, 400)
 
   }
@@ -76,4 +82,42 @@ document.querySelector(".out").addEventListener("click", (e) => {
   
 
 });
+
+document.querySelector('#file-upload').addEventListener("change", e => {
+ 
+  const file = e.target.files[0] 
+ 
+  if (!file) {
+    uploadCancel()
+    return;
+  }
+
+  let fileName = file.name
+
+  let Wrapper = document.querySelector('.dropzone')
+  let nameNode = Wrapper.querySelector('p')
+
+  nameNode.innerText = fileName
+
+  if (Wrapper.querySelector('span')) 
+  Wrapper.querySelector('span').innerText = ''
+  
+
+
+  Wrapper.appendChild(nameNode)
+  fadeIn(nameNode, '1', '200')
+  
+  if (!Wrapper.querySelector('button')) {
+  let uploadBtn = document.createElement('button')
+
+  uploadBtn.innerText = 'Upload file'
+  uploadBtn.classList.add('uploadBtn')
+
+  Wrapper.appendChild(uploadBtn)
+   fadeIn(uploadBtn, '1', '200')
+
+  // fancyButton(uploadBtn)
+  }
+});
+
 

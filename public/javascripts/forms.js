@@ -1,7 +1,7 @@
 
   
     document.querySelectorAll("form").forEach((form, i, array) => { 
-    
+        
         form.addEventListener('submit', e => {
             e.preventDefault();
             let submForm = e.target.elements
@@ -51,5 +51,7 @@
         })
       
      })
+
+
+
      
-    

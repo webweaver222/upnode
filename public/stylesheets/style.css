@@ -147,8 +147,46 @@ body .menu-container .flip-container .theflip .signup form button, body .menu-co
   display: block;
   margin: 20px auto 0 auto;
 }
-body .menu-container .flip-container .theflip .menu h1, body .menu-container .flip-container .theflip .menu h2, body .menu-container .flip-container .theflip .menu ul {
-  margin: 10px 20px 0 20px;
+body .menu-container .flip-container .theflip .menu .dropzone {
+  margin-top: 20px;
+  overflow: hidden;
+  position: relative;
+  border: 2px dashed rgba(170, 255, 255, 0.5);
+  display: inline-block;
+  z-index: 2;
+}
+body .menu-container .flip-container .theflip .menu .dropzone #file-upload {
+  opacity: 0;
+  padding: 80px 50px;
+  cursor: pointer;
+}
+body .menu-container .flip-container .theflip .menu .dropzone p {
+  top: 10%;
+  left: 2.5%;
+  width: 95%;
+  margin: 0;
+  display: inline-block;
+  opacity: 0;
+}
+body .menu-container .flip-container .theflip .menu .dropzone span {
+  top: 50%;
+  left: 28%;
+  color: #aaffff;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-family: "Trebuchet MS";
+}
+body .menu-container .flip-container .theflip .menu .dropzone span, body .menu-container .flip-container .theflip .menu .dropzone p {
+  position: absolute;
+  z-index: -1;
+}
+body .menu-container .flip-container .theflip .menu .dropzone .uploadBtn {
+  position: absolute;
+  bottom: 10px;
+  left: 30%;
+  padding: 10px 26px;
+  font-size: 14px;
 }
 body .menu-container .flip-container .theflip .menu p {
   position: absolute;
@@ -162,7 +200,11 @@ body .menu-container .flip-container .theflip .menu h1 {
   letter-spacing: 2px;
 }
 body .menu-container .flip-container .theflip .menu h2 {
-  margin-top: 110px;
+  margin: 100px auto 0 auto;
+  background-image: url("/images/1.png");
+  width: 54px;
+  height: 55px;
+  cursor: pointer;
 }
 body .menu-container .flip-container .theflip .menu h2 a {
   color: #aaffff;
@@ -177,7 +219,7 @@ body .menu-container .flip-container .theflip .menu h2 a:hover {
 body .menu-container .flip-container .theflip .menu ul {
   padding: 0;
   overflow: hidden;
-  margin-top: 120px;
+  margin-top: 25px;
 }
 body .menu-container .flip-container .theflip .menu ul li {
   list-style-type: none;

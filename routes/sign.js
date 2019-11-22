@@ -37,7 +37,8 @@ router.post("/", async function(req, res, next) {
       
     } catch (error) {
       
-      res.json({errors: error.message})
+      res.json({errors: error.message,
+        postType : req.body.postType})
     }
 
    
