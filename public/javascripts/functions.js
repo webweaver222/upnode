@@ -131,3 +131,21 @@ function uploadCancel () {
   dropzone.querySelector('span').innerText = 'Drop your file here'
 }
 
+ async function fetchUpload() {
+  
+    const file = document.querySelector('#file-upload').files[0]
+
+    let formData = new FormData()
+    formData.append('upload', file)
+
+    const res = await fetch('/upload', {
+      method: 'POST',
+      body: formData
+    })
+
+    const json = await res.json()
+
+    console.log(json)
+
+  
+}

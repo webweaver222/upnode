@@ -116,7 +116,11 @@ document.querySelector('#file-upload').addEventListener("change", e => {
   Wrapper.appendChild(uploadBtn)
    fadeIn(uploadBtn, '1', '200')
 
-  // fancyButton(uploadBtn)
+   uploadBtn.addEventListener('click', (e) => {
+    fetchUpload()
+   })
+
+
   }
 });
 
