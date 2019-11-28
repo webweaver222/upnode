@@ -188,6 +188,15 @@ body .menu-container .flip-container .theflip .menu .dropzone .uploadBtn {
   padding: 10px 26px;
   font-size: 14px;
 }
+body .menu-container .flip-container .theflip .menu .dropzone .uploadBtn .dot {
+  display: inline-block;
+  border-radius: 50%;
+  background-color: white;
+  opacity: 1;
+  width: 10px;
+  height: 10px;
+  margin: 0 6px 0 6px;
+}
 body .menu-container .flip-container .theflip .menu p {
   position: absolute;
   left: 148px;

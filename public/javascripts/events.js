@@ -85,6 +85,7 @@ document.querySelector(".out").addEventListener("click", (e) => {
 
 document.querySelector('#file-upload').addEventListener("change", e => {
  
+ 
   const file = e.target.files[0] 
  
   if (!file) {
@@ -117,7 +118,7 @@ document.querySelector('#file-upload').addEventListener("change", e => {
    fadeIn(uploadBtn, '1', '200')
 
    uploadBtn.addEventListener('click', (e) => {
-    fetchUpload()
+    fetchUpload(uploadBtn)
    })
 
 

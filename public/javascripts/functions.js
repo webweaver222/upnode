@@ -77,15 +77,62 @@ async function logOut() {
 
 
 const fadeIn = (element, opacity, duration) => {
-  (function increment(value = 0) {
+  return new Promise(function(resolve, reject) {
+    (function increment(value = 0) {
       element.style.opacity = String(value);
       if (element.style.opacity !== opacity) {
           setTimeout(() => {
               increment(value + 0.1);
           }, duration / 10);
-      }
+      } else resolve('+')
   })()
 
+  })
+
+}
+
+const fadeOut = (element, duration) => {
+  return new Promise(function(resolve, reject) {
+    (function decrement(value = 1) {
+      element.style.opacity = String(value);
+      if (element.style.opacity > '0') {
+        setTimeout(() => {
+            decrement(value - 0.1);
+        }, duration / 10);
+    } else resolve('+')
+    })();
+  })
+};
+
+
+async function uploadAnimation(button,flip) {
+  if (flip == 'on') {
+    button.innerText = ''
+    //button.style.backgroundColor = '#44ffff'
+
+    let dot = []
+    for (let i = 0 ; i < 4; i++) {
+       dot[i] = document.createElement('div')
+       dot[i].className = 'dot'
+       button.appendChild(dot[i])
+    }
+
+    let children = [].slice.call(button.children);
+    while (true) {
+      for (const dot of children) {
+        await fadeOut(dot, '80')
+      }
+
+      for (const dot of children) {
+        await fadeIn(dot, '0.8', '80')
+      }
+
+    }
+  } else {
+    button.innerHtml = ''
+    //button.style.backgroundColor = 'rgb(170,255,255)'
+    button.innerText = 'Upload file'
+  }
 }
 
 function clearErrors () {
@@ -109,9 +156,6 @@ function clearErrors () {
 
 }
 
-function clearDropZone () {
-  document.querySelector('.dropzone')
-}
 
 let opacity1 = function (e) {
   e.target.nextElementSibling.style.opacity = '1'
@@ -122,6 +166,8 @@ let opacity1 = function (e) {
  }
 
 function uploadCancel () {
+  document.querySelector('#file-upload').value = ''
+
   const dropzone = document.querySelector('.dropzone')
   dropzone.querySelector('p').innerText = ''
 
@@ -131,17 +177,21 @@ function uploadCancel () {
   dropzone.querySelector('span').innerText = 'Drop your file here'
 }
 
- async function fetchUpload() {
+ async function fetchUpload(uploadBtn) {
   
     const file = document.querySelector('#file-upload').files[0]
 
     let formData = new FormData()
     formData.append('upload', file)
 
+    uploadAnimation(uploadBtn ,'on')
+
     const res = await fetch('/upload', {
       method: 'POST',
       body: formData
     })
+
+    uploadAnimation(uploadBtn ,'off')
 
     const json = await res.json()
 
