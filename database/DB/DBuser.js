@@ -7,7 +7,7 @@ const DBuser = {
 
    save: async function (userData) {
 
-       const user = new User({email, username, password} = userData) // destr user object
+       const user = new User(/*{email, username, password} =*/ userData) // destr user object
 
        let doc = await user.save()
        return doc

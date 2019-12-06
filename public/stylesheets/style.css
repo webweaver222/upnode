@@ -46,7 +46,7 @@ body .menu-container {
   height: 100vh;
   flex-direction: column;
 }
-body .menu-container .error-notif {
+body .menu-container .error-notif, body .menu-container .notif {
   position: relative;
   z-index: 2;
   background-color: black;
@@ -58,6 +58,11 @@ body .menu-container .error-notif {
   opacity: 0;
   border-radius: 20px;
   border: 1.5px solid red;
+}
+body .menu-container .notif {
+  border: 1.5px solid #aaffff;
+  background-color: rgba(0, 0, 0, 0.4);
+  color: #aaffff;
 }
 body .menu-container .flip-container {
   width: 440px;
@@ -91,7 +96,7 @@ body .menu-container .flip-container .theflip .signup, body .menu-container .fli
   background-color: rgba(0, 0, 0, 0.5);
   height: 100%;
   width: 100%;
-  border: 2px solid black;
+  border: 2px solid rgba(0, 0, 0, 0.7);
   border-radius: 20px;
   backface-visibility: hidden;
   text-align: center;

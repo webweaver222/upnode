@@ -7,6 +7,8 @@ let upside = document.querySelector(".signup");
 let inside = document.querySelector(".signin");
 let back_arrow = document.querySelector(".back-arrow")
 
+
+
 document.querySelector(".up").addEventListener("click", (e) => {
 
   flip.transform = 'rotateY(180deg)';
@@ -84,8 +86,7 @@ document.querySelector(".out").addEventListener("click", (e) => {
 });
 
 document.querySelector('#file-upload').addEventListener("change", e => {
- 
- 
+  
   const file = e.target.files[0] 
  
   if (!file) {
@@ -117,10 +118,9 @@ document.querySelector('#file-upload').addEventListener("change", e => {
   Wrapper.appendChild(uploadBtn)
    fadeIn(uploadBtn, '1', '200')
 
-   uploadBtn.addEventListener('click', (e) => {
+   uploadBtn.addEventListener('click', () => {
     fetchUpload(uploadBtn)
    })
-
 
   }
 });

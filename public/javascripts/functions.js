@@ -1,4 +1,5 @@
 
+
 function afterSignIn() {
   
 
@@ -11,20 +12,47 @@ function afterSignIn() {
 
 }
 
-function validationFail(data) {
-  clearErrors()
+function notif(message) {
 
+  if (document.querySelector('.notif')) {
+    document.querySelector('.notif').parentNode.removeChild(document.querySelector('.notif'))
+  }
+
+    const notif = document.createElement('div')
+    notif.className = 'notif'
+    notif.innerText = 'Download link:'
+    const link = document.createElement('textarea')
+    link.cols = '45'
+    link.style.marginTop = '10px'
+    link.innerText = message 
+
+     
+
+    document.querySelector('.menu-container').appendChild(notif)
+    notif.appendChild(link)
+    fadeIn(notif, '1' , '700')
+    uploadCancel()
+  
+}
+
+function errorNotif(message) {
   if (!document.querySelector('.error-notif')) {
     const notif = document.createElement('div')
     notif.className = 'error-notif'
 
    
-     notif.innerText = "Validation error"
+     notif.innerText = message
 
     document.querySelector('.menu-container').appendChild(notif)
 
     fadeIn(notif, '0.4' , '700')
   }
+}
+
+function validationFail(data) {
+  clearErrors()
+
+  errorNotif("Validation error")
   
   const targetForm = document.querySelector(`.${data.postType}`)
   let fields = targetForm.getElementsByTagName('input')
@@ -181,9 +209,14 @@ function uploadCancel () {
   
     const file = document.querySelector('#file-upload').files[0]
 
+    
+      if (document.querySelector('.error-notif'))
+          document.querySelector('.error-notif').parentNode.removeChild(document.querySelector('.error-notif'))
+
     let formData = new FormData()
     formData.append('upload', file)
 
+    uploadBtn.disabled = true; 
     uploadAnimation(uploadBtn ,'on')
 
     const res = await fetch('/upload', {
@@ -192,10 +225,18 @@ function uploadCancel () {
     })
 
     uploadAnimation(uploadBtn ,'off')
+    uploadBtn.disabled = false; 
 
     const json = await res.json()
 
-    console.log(json)
+    if (json.error) {
+      errorNotif(json.error.message)
+    } else  notif(json.link)
+
+  
+
 
   
 }
+
+
