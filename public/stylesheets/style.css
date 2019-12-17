@@ -74,8 +74,8 @@ body .menu-container .flip-container .back-arrow {
   display: none;
   position: absolute;
   font-size: 19px;
-  top: 10px;
-  left: 10px;
+  top: 15px;
+  left: 12px;
   color: #aaffff;
   cursor: pointer;
   z-index: 1;
@@ -151,6 +151,27 @@ body .menu-container .flip-container .theflip .signup form .field-container ul l
 body .menu-container .flip-container .theflip .signup form button, body .menu-container .flip-container .theflip .signin form button {
   display: block;
   margin: 20px auto 0 auto;
+}
+body .menu-container .flip-container .theflip .menu .file-container {
+  padding: 20px 20px 0 20px;
+}
+body .menu-container .flip-container .theflip .menu .file-container .file-name {
+  word-wrap: break-word;
+  font-size: 18px;
+  font-style: italic;
+  color: #aaffff;
+  padding: 0 0 12px 0;
+  border-bottom: 1px solid rgba(170, 255, 255, 0.5);
+}
+body .menu-container .flip-container .theflip .menu .file-icon {
+  padding: 25px 0 20px 0;
+}
+body .menu-container .flip-container .theflip .menu .file-icon i {
+  font-size: 64px;
+}
+body .menu-container .flip-container .theflip .menu .file-icon i:before {
+  font-size: 64px;
+  font-style: normal;
 }
 body .menu-container .flip-container .theflip .menu .dropzone {
   margin-top: 20px;

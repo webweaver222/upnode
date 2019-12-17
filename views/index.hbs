@@ -7,6 +7,7 @@
     <title>UpNode</title>
     <link rel="stylesheet" href="/stylesheets/style.css">
     <link rel="stylesheet" href="/stylesheets/flip.css">
+    <link rel="stylesheet" href="/stylesheets/file-icons-js/css/style.css">
 
     
 </head>
@@ -21,19 +22,40 @@
     <div class="menu-container">
         
         <div class="flip-container">
-        <span class="back-arrow">&#8592;</span>
+        {{#unless theFile}}
+            <span class="back-arrow">&#8592;</span>
+            {{else}}
+            <span class="back-arrow" style="display:inline">&#8592;</span>
+         {{/unless}}   
         <div class="theflip">
         <div class="menu">
-            <h1>Welcome to the UpNode.loc</h1>
-            <p class="notif"></p>
-           
-                
-                <div class="dropzone">
-                    <input id="file-upload" type="file"/>
-                    <span>Drop your file here</span>
-                    <p></p>
+            {{#unless theFile}}
+                <h1>Welcome to the UpNode.loc</h1>
+                    <div class="dropzone">
+                        <input id="file-upload" type="file"/>
+                        <span>Drop your file here</span>
+                        <p></p>
+                    </div>
+            {{else}}
+                <div class="file-container">
+                    <div class="file-name">
+                        {{theFile.originalName}}.{{theFile.ext}}
+                    </div>
+                   <div class="file-icon">
+                       <i class="{{theFile.className}}"></i>
+                   </div>
                 </div>
-                
+
+                <audio controls>
+                    <source src="{{theFile.url}}" type="audio/x-m4a" />
+                     <source src="{{theFile.url}}" type="audio/mpeg"> />
+                    Your browser does not support the audio element.
+                </audio>
+
+                <div class="download-button">
+                    <button>download</button>
+                </div>
+            {{/unless}}
 
             {{#if theUser}}
                 <ul>

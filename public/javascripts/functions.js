@@ -14,11 +14,13 @@ function afterSignIn() {
 
 function notif(message) {
 
-  if (document.querySelector('.notif')) {
-    document.querySelector('.notif').parentNode.removeChild(document.querySelector('.notif'))
+  let notif = document.querySelector('.notif')
+
+  if (notif) {
+    notif.parentNode.removeChild(notif)
   }
 
-    const notif = document.createElement('div')
+    notif = document.createElement('div')
     notif.className = 'notif'
     notif.innerText = 'Download link:'
     const link = document.createElement('textarea')
@@ -233,10 +235,7 @@ function uploadCancel () {
       errorNotif(json.error.message)
     } else  notif(json.link)
 
-  
 
-
-  
 }
 
 

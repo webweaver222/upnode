@@ -5,6 +5,7 @@ const authMiddleware = require('../bin/middleware/authMiddleware')
 /* GET home page. */
 router.get('/', authMiddleware, function(req, res, next) {
 
+  
  
   if (!req.user) {
     res.render('index', { title: 'Express'});

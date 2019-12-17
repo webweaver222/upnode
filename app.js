@@ -10,10 +10,12 @@ const session = require('express-session')
 
 
 
+
 var indexRouter  = require('./routes/index');
 var signRouter   = require('./routes/sign');
 var logoutRouter = require('./routes/logout');
 var uploadRouter = require('./routes/upload');
+var fileRouter   = require('./routes/file');
 var app = express();
 
 // view engine setup
@@ -26,6 +28,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/files', express.static('C:\\uploads'));
 app.use(session({
   secret: 'ssshhhhh',
   resave: false,
@@ -36,6 +39,7 @@ app.use('/', indexRouter);
 app.use('/sign', signRouter);
 app.use('/logout', logoutRouter)
 app.use('/upload', uploadRouter)
+app.use('/file', fileRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -2,6 +2,7 @@
 
 console.log('hello form client js');
 
+
 let flip = document.querySelector(".theflip").style;
 let upside = document.querySelector(".signup");
 let inside = document.querySelector(".signin");
@@ -16,7 +17,7 @@ document.querySelector(".up").addEventListener("click", (e) => {
   
   setTimeout(() => {
     back_arrow.style.display = 'inline';
-    document.querySelector(".notif").innerText = '';
+    //document.querySelector(".notif").innerText = '';
     document.querySelector('.dropzone').style.display = 'none'
     uploadCancel()
   }, 200)
@@ -38,6 +39,14 @@ document.querySelector(".in").addEventListener("click", (e) => {
 
 
 back_arrow.addEventListener("click", (e) => {
+  console.log(window.location.href)
+
+  //check if user curently on file page
+  if (window.location.href.search(/\/file\//g) != -1) {
+    window.location.replace('/');
+    return
+  }
+  
 
   if (inside.style.display == 'none') {
 
@@ -84,7 +93,7 @@ document.querySelector(".out").addEventListener("click", (e) => {
   
 
 });
-
+if (document.querySelector('#file-upload'))
 document.querySelector('#file-upload').addEventListener("change", e => {
   
   const file = e.target.files[0] 

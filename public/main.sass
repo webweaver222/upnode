@@ -1,4 +1,5 @@
 $accent: rgb(170,255,255)
+$lighter: rgba(170,255,255, .5)
 body
     //background-image: url('/images/99499.jpg')
     background-size: cover
@@ -68,8 +69,8 @@ body
                 display: none
                 position: absolute
                 font-size: 19px
-                top: 10px
-                left: 10px
+                top: 15px
+                left: 12px
                 color: $accent
                 cursor: pointer
                 z-index: 1
@@ -134,11 +135,27 @@ body
                             display: block 
                             margin: 20px auto 0 auto
                 .menu
+                    .file-container
+                        padding: 20px 20px 0 20px
+                        .file-name
+                           word-wrap: break-word
+                           font-size: 18px
+                           font-style: italic
+                           color: $accent
+                           padding: 0 0 12px 0
+                           border-bottom: 1px solid $lighter
+                    .file-icon
+                        padding: 25px 0 20px 0  
+                        i
+                            font-size: 64px
+                            &:before
+                                font-size: 64px
+                                font-style: normal
                     .dropzone
                         margin-top: 20px
                         overflow: hidden
                         position: relative
-                        border: 2px dashed rgba(170,255,255, .5)
+                        border: 2px dashed $lighter
                         display: inline-block
                         z-index: 2
                         #file-upload

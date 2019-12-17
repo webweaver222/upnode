@@ -24,14 +24,16 @@ router.post('/', (req, res) => {
 
       var storage = multer.diskStorage({
         destination: function (req, file, cb) {
-          cb(null, path)
-        }
+          
+          cb(null,  path) 
+        },
+        
       })
 
       const upload = multer({
         storage: storage,
         limits: {
-          fileSize: 100000
+          fileSize: 85000000
         }
       }).single('upload')
 
@@ -45,10 +47,12 @@ router.post('/', (req, res) => {
           return
         }
 
+        console.log(req.file.path.replace("C:\\uploads", ""))
+
         let doc = await DBfile.save({
           originalName: req.file.originalname.split('.')[0],
-          hashName: req.file.filename,
-          path: req.file.path,
+          //hashName: req.file.filename,
+          path: req.file.path.replace("C:\\uploads", ""), 
           ext: req.file.originalname.split('.')[1]
 
         })
@@ -61,6 +65,7 @@ router.post('/', (req, res) => {
 
     })
   } catch (e) {
+      console.log(e)
     res.send({ error: e.message })
   }
 })
