@@ -46,32 +46,38 @@
                    </div>
                 </div>
 
-                <audio controls>
-                    <source src="{{theFile.url}}" type="audio/x-m4a" />
-                     <source src="{{theFile.url}}" type="audio/mpeg"> />
-                    Your browser does not support the audio element.
-                </audio>
+               
+                {{#if_eq theFile.className "audio-icon"}}
+                    <audio controls>
+                        <source src="{{theFile.url}}" type="audio/x-m4a" />
+                        <source src="{{theFile.url}}" type="audio/mpeg"> />
+                        Your browser does not support the audio element.
+                    </audio>
+                {{/if_eq}}
 
                 <div class="download-button">
-                    <button>download</button>
+                    <a href="{{theFile.url}}" download="{{theFile.originalName}}.{{theFile.ext}}">Download</a>
                 </div>
             {{/unless}}
 
-            {{#if theUser}}
-                <ul>
-                    <li class="up" style="display:none;"><a href="#">Sign Up</a></li>
-                    <li class="in" style="display:none;"><a href="#">Sign In</a></li>
-                    <li class="out" style="display:block"><a href="#">Log Out</a></li>
-                </ul>
-            {{else}}
-            <ul>
-                <li class="up" style="display:block;"><a href="#">Sign Up</a></li>
-                <li class="in" style="display:block;"><a href="#">Sign In</a></li>
-                <li class="out" style="display:none"><a href="#">Log Out</a></li>
-            </ul>
-             {{/if}}
-        </div>
 
+            {{#unless theFile}}
+                {{#if theUser}}
+                    <ul>
+                        <li class="up" style="display:none;"><a href="#">Sign Up</a></li>
+                        <li class="in" style="display:none;"><a href="#">Sign In</a></li>
+                        <li class="out" style="display:block"><a href="#">Log Out</a></li>
+                    </ul>
+                {{else}}
+                <ul>
+                    <li class="up" style="display:block;"><a href="#">Sign Up</a></li>
+                    <li class="in" style="display:block;"><a href="#">Sign In</a></li>
+                    <li class="out" style="display:none"><a href="#">Log Out</a></li>
+                </ul>
+                {{/if}}
+            {{/unless}}
+        </div>
+        {{#unless theFile}}
         <div class="signup">
             <form action="" method="post">
                 <div class="field-container">
@@ -115,7 +121,7 @@
 
            
         </div>
-        
+        {{/unless}}
         </div>
         </div>
 

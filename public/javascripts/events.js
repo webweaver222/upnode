@@ -9,7 +9,7 @@ let inside = document.querySelector(".signin");
 let back_arrow = document.querySelector(".back-arrow")
 
 
-
+if (document.querySelector(".up"))
 document.querySelector(".up").addEventListener("click", (e) => {
 
   flip.transform = 'rotateY(180deg)';
@@ -24,7 +24,7 @@ document.querySelector(".up").addEventListener("click", (e) => {
 });
 
 
-
+if (document.querySelector(".in"))
 document.querySelector(".in").addEventListener("click", (e) => {
   e.preventDefault()
   flip.transform = 'rotateY(180deg)';
@@ -76,7 +76,7 @@ back_arrow.addEventListener("click", (e) => {
 })
 
 
-
+if (document.querySelector(".out"))
 document.querySelector(".out").addEventListener("click", (e) => {
 
   e.preventDefault()
@@ -93,6 +93,7 @@ document.querySelector(".out").addEventListener("click", (e) => {
   
 
 });
+
 if (document.querySelector('#file-upload'))
 document.querySelector('#file-upload').addEventListener("change", e => {
   
@@ -133,5 +134,18 @@ document.querySelector('#file-upload').addEventListener("change", e => {
 
   }
 });
+
+if(document.querySelector('.download-button')) {
+  document.querySelector(".download-button button").addEventListener("click", async function() {
+    
+     //const res = await fetch('/file', {
+     // method: 'POST',
+      //body: 
+    //}
+    //)
+
+  })
+}
+
 
 

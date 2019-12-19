@@ -51,9 +51,8 @@ router.post('/', (req, res) => {
 
         let doc = await DBfile.save({
           originalName: req.file.originalname.split('.')[0],
-          //hashName: req.file.filename,
           path: req.file.path.replace("C:\\uploads", ""), 
-          ext: req.file.originalname.split('.')[1]
+          ext: req.file.originalname.split('.').pop()
 
         })
 

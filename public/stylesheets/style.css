@@ -19,7 +19,7 @@ body #video-bg video {
   object-fit: cover;
   opacity: 0.9;
 }
-body button {
+body button, body .download-button > a {
   margin-top: 15px;
   display: inline-block;
   border: 1px solid black;
@@ -36,7 +36,7 @@ body button {
   transition: background-color 0.1s ease;
   cursor: pointer;
 }
-body button:hover {
+body button:hover, body .download-button > a:hover {
   background-color: #44ffff;
 }
 body .menu-container {
@@ -151,6 +151,12 @@ body .menu-container .flip-container .theflip .signup form .field-container ul l
 body .menu-container .flip-container .theflip .signup form button, body .menu-container .flip-container .theflip .signin form button {
   display: block;
   margin: 20px auto 0 auto;
+}
+body .menu-container .flip-container .theflip .menu .download-button {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translate(-50%, 0);
 }
 body .menu-container .flip-container .theflip .menu .file-container {
   padding: 20px 20px 0 20px;
