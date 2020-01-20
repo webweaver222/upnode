@@ -21,8 +21,9 @@ const DBfile = {
 
     },
 
-    fetchRecent: function (params) {
-            
+    fetchRecent: async function (params) {
+       const files = await File.find().sort( { date: -1 }).limit(3)  
+       
     }
 }
 
