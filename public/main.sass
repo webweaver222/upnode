@@ -6,6 +6,7 @@ body
     margin: 0
     width: 100%
     font-family: sans-serif
+    overflow-x: hidden
     #video-bg 
         position: fixed
         top: 0
@@ -37,7 +38,6 @@ body
         cursor: pointer
         &:hover
             background-color: darken($accent, 20%)
-           
     .menu-container
         display: flex
         justify-content: center
@@ -60,11 +60,34 @@ body
             border: 1.5px solid $accent
             background-color: rgba(0,0,0, 0.4)
             color: $accent
-        .flip-container
+        .switch
+            position: absolute
+            top: 10px
+            right: 10px
+            div
+                width: 20px
+                height: 3px
+                margin-bottom: 3px
+                background-color: white
+        #uptable
+            position: absolute
+            width: 200px
+            height: 200px
+            border: 1px solid $accent
+            background-color: rgba(0,0,0, 0.4)
+            transform: translateX(3500px)
+            transition: all .5s ease 
+        #uptable.in
+            transform: translateX(0) rotate(720deg)
+        #flip-container.out
+            transform: translateX(-3500px) rotate(720deg)
+        #flip-container
             width: 440px
             height: 340px
             position: relative
             perspective: 1000px
+            transition: all 1s ease
+            transform: translateX(0) rotate(0deg)
             .back-arrow
                 display: none
                 position: absolute
@@ -142,6 +165,14 @@ body
                         transform: translate(-50%, 0)
                     .file-container
                         padding: 20px 20px 0 20px
+                        .uploader-info
+                            font-size: 15px
+                            text-align: left
+                            margin: 9px 0 0 0
+                            padding-left: 10px
+                            span
+                                font-style: italic
+                                font-size: 13px
                         .file-name
                            word-wrap: break-word
                            font-size: 18px

@@ -12,6 +12,7 @@
     
 </head>
 <body>
+   
     <div id="video-bg">
         <video id = "vid" autoplay muted loop>
             <source src="/vid/rain.mp4" type="video/mp4">
@@ -21,7 +22,7 @@
 
     <div class="menu-container">
         
-        <div class="flip-container">
+        <div id="flip-container">
         {{#unless theFile}}
             <span class="back-arrow">&#8592;</span>
             {{else}}
@@ -40,6 +41,15 @@
                 <div class="file-container">
                     <div class="file-name">
                         {{theFile.originalName}}.{{theFile.ext}}
+                    </div>
+
+                    <div class="uploader-info">
+                        Uploader: 
+                         {{#if theFile.uploader.username}}
+                            <span>{{theFile.uploader.username}}</span>
+                         {{else}}
+                              <span>anon</span>
+                         {{/if}}
                     </div>
                    <div class="file-icon">
                        <i class="{{theFile.className}}"></i>
@@ -124,6 +134,15 @@
         {{/unless}}
         </div>
         </div>
+
+        <div id="uptable"></div>
+
+        <div class="switch">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        
 
         
         

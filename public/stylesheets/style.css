@@ -3,6 +3,7 @@ body {
   margin: 0;
   width: 100%;
   font-family: sans-serif;
+  overflow-x: hidden;
 }
 body #video-bg {
   position: fixed;
@@ -64,13 +65,41 @@ body .menu-container .notif {
   background-color: rgba(0, 0, 0, 0.4);
   color: #aaffff;
 }
-body .menu-container .flip-container {
+body .menu-container .switch {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+body .menu-container .switch div {
+  width: 20px;
+  height: 3px;
+  margin-bottom: 3px;
+  background-color: white;
+}
+body .menu-container #uptable {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border: 1px solid #aaffff;
+  background-color: rgba(0, 0, 0, 0.4);
+  transform: translateX(3500px);
+  transition: all 0.5s ease;
+}
+body .menu-container #uptable.in {
+  transform: translateX(0) rotate(720deg);
+}
+body .menu-container #flip-container.out {
+  transform: translateX(-3500px) rotate(720deg);
+}
+body .menu-container #flip-container {
   width: 440px;
   height: 340px;
   position: relative;
   perspective: 1000px;
+  transition: all 1s ease;
+  transform: translateX(0) rotate(0deg);
 }
-body .menu-container .flip-container .back-arrow {
+body .menu-container #flip-container .back-arrow {
   display: none;
   position: absolute;
   font-size: 19px;
@@ -80,17 +109,17 @@ body .menu-container .flip-container .back-arrow {
   cursor: pointer;
   z-index: 1;
 }
-body .menu-container .flip-container .back-arrow:hover {
+body .menu-container #flip-container .back-arrow:hover {
   color: white;
 }
-body .menu-container .flip-container .theflip {
+body .menu-container #flip-container .theflip {
   position: absolute;
   width: 100%;
   height: 100%;
   transition: transform 0.8s;
   transform-style: preserve-3d;
 }
-body .menu-container .flip-container .theflip .signup, body .menu-container .flip-container .theflip .signin, body .menu-container .flip-container .theflip .menu {
+body .menu-container #flip-container .theflip .signup, body .menu-container #flip-container .theflip .signin, body .menu-container #flip-container .theflip .menu {
   color: #aaffff;
   position: absolute;
   background-color: rgba(0, 0, 0, 0.5);
@@ -101,23 +130,23 @@ body .menu-container .flip-container .theflip .signup, body .menu-container .fli
   backface-visibility: hidden;
   text-align: center;
 }
-body .menu-container .flip-container .theflip .signin {
+body .menu-container #flip-container .theflip .signin {
   transform: rotateY(180deg);
 }
-body .menu-container .flip-container .theflip .signup {
+body .menu-container #flip-container .theflip .signup {
   transform: rotateY(180deg);
 }
-body .menu-container .flip-container .theflip .signup, body .menu-container .flip-container .theflip .signin {
+body .menu-container #flip-container .theflip .signup, body .menu-container #flip-container .theflip .signin {
   display: flex;
 }
-body .menu-container .flip-container .theflip .signup form, body .menu-container .flip-container .theflip .signin form {
+body .menu-container #flip-container .theflip .signup form, body .menu-container #flip-container .theflip .signin form {
   margin: auto;
   text-align: left;
 }
-body .menu-container .flip-container .theflip .signup form .field-container, body .menu-container .flip-container .theflip .signin form .field-container {
+body .menu-container #flip-container .theflip .signup form .field-container, body .menu-container #flip-container .theflip .signin form .field-container {
   position: relative;
 }
-body .menu-container .flip-container .theflip .signup form .field-container input, body .menu-container .flip-container .theflip .signin form .field-container input {
+body .menu-container #flip-container .theflip .signup form .field-container input, body .menu-container #flip-container .theflip .signin form .field-container input {
   display: block;
   border-radius: 10px;
   border: 2px solid #aaffff;
@@ -126,10 +155,10 @@ body .menu-container .flip-container .theflip .signup form .field-container inpu
   width: 250px;
   position: relative;
 }
-body .menu-container .flip-container .theflip .signup form .field-container input.errored, body .menu-container .flip-container .theflip .signin form .field-container input.errored {
+body .menu-container #flip-container .theflip .signup form .field-container input.errored, body .menu-container #flip-container .theflip .signin form .field-container input.errored {
   border: 2px solid red;
 }
-body .menu-container .flip-container .theflip .signup form .field-container ul, body .menu-container .flip-container .theflip .signin form .field-container ul {
+body .menu-container #flip-container .theflip .signup form .field-container ul, body .menu-container #flip-container .theflip .signin form .field-container ul {
   background-color: rgba(245, 12, 12, 0.4);
   border: black solid 1px;
   border-radius: 10px;
@@ -142,26 +171,36 @@ body .menu-container .flip-container .theflip .signup form .field-container ul, 
   transition: opacity 0.5s ease;
   opacity: 0;
 }
-body .menu-container .flip-container .theflip .signup form .field-container ul li, body .menu-container .flip-container .theflip .signin form .field-container ul li {
+body .menu-container #flip-container .theflip .signup form .field-container ul li, body .menu-container #flip-container .theflip .signin form .field-container ul li {
   list-style-type: none;
   color: black;
   font-size: 14px;
   padding-bottom: 7px;
 }
-body .menu-container .flip-container .theflip .signup form button, body .menu-container .flip-container .theflip .signin form button {
+body .menu-container #flip-container .theflip .signup form button, body .menu-container #flip-container .theflip .signin form button {
   display: block;
   margin: 20px auto 0 auto;
 }
-body .menu-container .flip-container .theflip .menu .download-button {
+body .menu-container #flip-container .theflip .menu .download-button {
   position: absolute;
   bottom: 15px;
   left: 50%;
   transform: translate(-50%, 0);
 }
-body .menu-container .flip-container .theflip .menu .file-container {
+body .menu-container #flip-container .theflip .menu .file-container {
   padding: 20px 20px 0 20px;
 }
-body .menu-container .flip-container .theflip .menu .file-container .file-name {
+body .menu-container #flip-container .theflip .menu .file-container .uploader-info {
+  font-size: 15px;
+  text-align: left;
+  margin: 9px 0 0 0;
+  padding-left: 10px;
+}
+body .menu-container #flip-container .theflip .menu .file-container .uploader-info span {
+  font-style: italic;
+  font-size: 13px;
+}
+body .menu-container #flip-container .theflip .menu .file-container .file-name {
   word-wrap: break-word;
   font-size: 18px;
   font-style: italic;
@@ -169,17 +208,17 @@ body .menu-container .flip-container .theflip .menu .file-container .file-name {
   padding: 0 0 12px 0;
   border-bottom: 1px solid rgba(170, 255, 255, 0.5);
 }
-body .menu-container .flip-container .theflip .menu .file-icon {
+body .menu-container #flip-container .theflip .menu .file-icon {
   padding: 25px 0 20px 0;
 }
-body .menu-container .flip-container .theflip .menu .file-icon i {
+body .menu-container #flip-container .theflip .menu .file-icon i {
   font-size: 64px;
 }
-body .menu-container .flip-container .theflip .menu .file-icon i:before {
+body .menu-container #flip-container .theflip .menu .file-icon i:before {
   font-size: 64px;
   font-style: normal;
 }
-body .menu-container .flip-container .theflip .menu .dropzone {
+body .menu-container #flip-container .theflip .menu .dropzone {
   margin-top: 20px;
   overflow: hidden;
   position: relative;
@@ -187,12 +226,12 @@ body .menu-container .flip-container .theflip .menu .dropzone {
   display: inline-block;
   z-index: 2;
 }
-body .menu-container .flip-container .theflip .menu .dropzone #file-upload {
+body .menu-container #flip-container .theflip .menu .dropzone #file-upload {
   opacity: 0;
   padding: 80px 50px;
   cursor: pointer;
 }
-body .menu-container .flip-container .theflip .menu .dropzone p {
+body .menu-container #flip-container .theflip .menu .dropzone p {
   top: 10%;
   left: 2.5%;
   width: 95%;
@@ -200,7 +239,7 @@ body .menu-container .flip-container .theflip .menu .dropzone p {
   display: inline-block;
   opacity: 0;
 }
-body .menu-container .flip-container .theflip .menu .dropzone span {
+body .menu-container #flip-container .theflip .menu .dropzone span {
   top: 50%;
   left: 28%;
   color: #aaffff;
@@ -209,18 +248,18 @@ body .menu-container .flip-container .theflip .menu .dropzone span {
   font-size: 14px;
   font-family: "Trebuchet MS";
 }
-body .menu-container .flip-container .theflip .menu .dropzone span, body .menu-container .flip-container .theflip .menu .dropzone p {
+body .menu-container #flip-container .theflip .menu .dropzone span, body .menu-container #flip-container .theflip .menu .dropzone p {
   position: absolute;
   z-index: -1;
 }
-body .menu-container .flip-container .theflip .menu .dropzone .uploadBtn {
+body .menu-container #flip-container .theflip .menu .dropzone .uploadBtn {
   position: absolute;
   bottom: 10px;
   left: 30%;
   padding: 10px 26px;
   font-size: 14px;
 }
-body .menu-container .flip-container .theflip .menu .dropzone .uploadBtn .dot {
+body .menu-container #flip-container .theflip .menu .dropzone .uploadBtn .dot {
   display: inline-block;
   border-radius: 50%;
   background-color: white;
@@ -229,60 +268,60 @@ body .menu-container .flip-container .theflip .menu .dropzone .uploadBtn .dot {
   height: 10px;
   margin: 0 6px 0 6px;
 }
-body .menu-container .flip-container .theflip .menu p {
+body .menu-container #flip-container .theflip .menu p {
   position: absolute;
   left: 148px;
   color: white;
   font-size: 13px;
 }
-body .menu-container .flip-container .theflip .menu h1 {
+body .menu-container #flip-container .theflip .menu h1 {
   color: white;
   font-size: 25px;
   letter-spacing: 2px;
 }
-body .menu-container .flip-container .theflip .menu h2 {
+body .menu-container #flip-container .theflip .menu h2 {
   margin: 100px auto 0 auto;
   background-image: url("/images/1.png");
   width: 54px;
   height: 55px;
   cursor: pointer;
 }
-body .menu-container .flip-container .theflip .menu h2 a {
+body .menu-container #flip-container .theflip .menu h2 a {
   color: #aaffff;
   font-size: 20px;
   text-transform: uppercase;
   letter-spacing: 1px;
   text-decoration: none;
 }
-body .menu-container .flip-container .theflip .menu h2 a:hover {
+body .menu-container #flip-container .theflip .menu h2 a:hover {
   color: white;
 }
-body .menu-container .flip-container .theflip .menu ul {
+body .menu-container #flip-container .theflip .menu ul {
   padding: 0;
   overflow: hidden;
   margin-top: 25px;
 }
-body .menu-container .flip-container .theflip .menu ul li {
+body .menu-container #flip-container .theflip .menu ul li {
   list-style-type: none;
 }
-body .menu-container .flip-container .theflip .menu ul li a {
+body .menu-container #flip-container .theflip .menu ul li a {
   text-decoration: none;
   color: #aaffff;
   font-size: 17px;
   padding: 5px 7px;
 }
-body .menu-container .flip-container .theflip .menu ul li a:hover {
+body .menu-container #flip-container .theflip .menu ul li a:hover {
   text-decoration: underline;
 }
-body .menu-container .flip-container .theflip .menu ul li.up {
+body .menu-container #flip-container .theflip .menu ul li.up {
   float: left;
   margin-left: 20px;
 }
-body .menu-container .flip-container .theflip .menu ul li.in, body .menu-container .flip-container .theflip .menu ul li.out {
+body .menu-container #flip-container .theflip .menu ul li.in, body .menu-container #flip-container .theflip .menu ul li.out {
   float: right;
   margin-right: 20px;
 }
-body .menu-container .flip-container .theflip .menu .notif {
+body .menu-container #flip-container .theflip .menu .notif {
   color: red;
 }
 body footer {

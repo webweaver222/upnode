@@ -19,6 +19,10 @@ const DBfile = {
             reject('File not found')
        })
 
+    },
+
+    fetchRecent: function (params) {
+            
     }
 }
 

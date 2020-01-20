@@ -12,6 +12,16 @@ const fileSchema = new DB.mongoose.Schema({
 
     path: {
         type: String
+    },
+
+    uploader: {
+        type: DB.mongoose.Types.ObjectId,
+        ref: 'User'
+    },
+
+    date: {
+         type: Date, 
+         default: new Date()
     }
 })
 

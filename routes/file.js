@@ -16,9 +16,15 @@ router.get('/:file_id', authMiddleware, async function(req, res)  {
     try {
         const file = await DBfile.fetch(req.params.file_id)
 
+        if (file.uploader)
+        await file.populate('uploader').execPopulate()
+        else file.uploader = 'anon'
+
+        //console.log(file.uploader)
         file.className = icons.getClass(file.originalName + '.' + file.ext);
         if (!file.className) file.className = 'zip-icon'
-       
+    
+
         file.url = 'http://' + req.headers.host + '/files' + file.path 
         if (!req.user) {
             res.render('index', { title: 'Express', theFile: file});
@@ -28,7 +34,7 @@ router.get('/:file_id', authMiddleware, async function(req, res)  {
         
         
     } catch (e) {
-        console.log(e)
+        res.send(e)
     }
 
     

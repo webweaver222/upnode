@@ -3,14 +3,14 @@ var router = express.Router();
 const multer = require('multer')
 const DBfile = require('../database/DB/DBfile')
 const mkdirp = require('mkdirp')
+const authMiddleware = require('../bin/middleware/authMiddleware')
 
 
 
 
 
 
-
-router.post('/', (req, res) => {
+router.post('/', authMiddleware, (req, res) => {
 
   let now = new Date()
   let year = now.getFullYear()
@@ -47,12 +47,13 @@ router.post('/', (req, res) => {
           return
         }
 
-        console.log(req.file.path.replace("C:\\uploads", ""))
+        console.log(req.user)
 
         let doc = await DBfile.save({
           originalName: req.file.originalname.split('.')[0],
           path: req.file.path.replace("C:\\uploads", ""), 
-          ext: req.file.originalname.split('.').pop()
+          ext: req.file.originalname.split('.').pop(),
+          uploader: (req.user) ? req.user._id : null
 
         })
 
