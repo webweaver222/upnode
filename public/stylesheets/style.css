@@ -78,12 +78,24 @@ body .menu-container .switch div {
 }
 body .menu-container #uptable {
   position: absolute;
-  width: 200px;
-  height: 200px;
-  border: 1px solid #aaffff;
-  background-color: rgba(0, 0, 0, 0.4);
   transform: translateX(3500px);
   transition: all 0.5s ease;
+}
+body .menu-container #uptable table {
+  background-color: rgba(96, 96, 98, 0.55);
+  width: 100%;
+  border: 1px black solid;
+  margin-bottom: 50px;
+  border-collapse: collapse;
+}
+body .menu-container #uptable table th, body .menu-container #uptable table td {
+  border-bottom: 1px black solid;
+  padding: 6px 5px;
+  cursor: pointer;
+}
+body .menu-container #uptable table th a, body .menu-container #uptable table td a {
+  color: #aaffff;
+  text-decoration: none;
 }
 body .menu-container #uptable.in {
   transform: translateX(0) rotate(720deg);

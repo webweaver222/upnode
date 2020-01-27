@@ -14,13 +14,11 @@ router.get('/:file_id', authMiddleware, async function(req, res)  {
    
 
     try {
-        const file = await DBfile.fetch(req.params.file_id)
+        let file = await DBfile.fetch(req.params.file_id)
 
-        if (file.uploader)
-        await file.populate('uploader').execPopulate()
-        else file.uploader = 'anon'
-
-        //console.log(file.uploader)
+        await file.populate( {path : 'uploader'}).execPopulate()
+        
+       
         file.className = icons.getClass(file.originalName + '.' + file.ext);
         if (!file.className) file.className = 'zip-icon'
     

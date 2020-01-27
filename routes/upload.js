@@ -7,7 +7,7 @@ const authMiddleware = require('../bin/middleware/authMiddleware')
 
 
 
-
+function formatBytes(a,b){if(0==a)return"0 Bytes";var c=1024,d=b||2,e=["Bytes","KB","MB","GB","TB","PB","EB","ZB","YB"],f=Math.floor(Math.log(a)/Math.log(c));return parseFloat((a/Math.pow(c,f)).toFixed(d))+" "+e[f]}
 
 
 router.post('/', authMiddleware, (req, res) => {
@@ -53,8 +53,8 @@ router.post('/', authMiddleware, (req, res) => {
           originalName: req.file.originalname.split('.')[0],
           path: req.file.path.replace("C:\\uploads", ""), 
           ext: req.file.originalname.split('.').pop(),
-          uploader: (req.user) ? req.user._id : null
-
+          uploader: (req.user) ? req.user._id : null,
+          size: formatBytes(req.file.size)
         })
 
         

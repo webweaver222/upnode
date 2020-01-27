@@ -1,4 +1,82 @@
+const recentTableFetch = async function (sortBy = 'date', order = '-1')  {
 
+  
+  console.log('1')
+  let json = await fetch('/recentUploads', {
+    method: 'post',
+    headers: {
+      'Accept': 'application/json, text/plain, */*',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      sort: sortBy,
+      order: order
+    })
+  })
+
+  let data = await json.json()
+  
+  recentTableBuild(data)
+
+}
+
+
+function recentTableBuild(files) {
+
+  document.querySelector("#uptable").innerHTML = ''
+
+
+  let uptable = document.querySelector("#uptable")
+  var table = document.createElement('table')
+  var tableHeader = document.createElement('tr')
+  var FileNameH = document.createElement('th')
+  FileNameH.innerText = 'File Name'
+  var FileUploader = document.createElement('th')
+  FileUploader.innerText = 'Uploader'
+  var FileSize = document.createElement('th')
+  FileSize.innerText = 'File Size'
+  var date = document.createElement('th')
+  date.innerText = 'Upload date'
+
+  
+
+  tableHeader.appendChild(FileNameH)
+  tableHeader.appendChild(FileUploader)
+  tableHeader.appendChild(FileSize)
+  tableHeader.appendChild(date)
+  FileNameH.addEventListener("click", () => {
+    recentTableFetch('originalName', '1')
+  })
+  
+  table.appendChild(tableHeader)
+
+  files.recentFiles.forEach(file => {
+    let row = document.createElement('tr')
+    let FileName = document.createElement('td')
+    if (file.originalName.length > 35) file.originalName = file.originalName.substr(0, 35) + '...'
+    FileName.innerHTML = `<a href='/file/${file._id}'>${file.originalName}</a>`
+    row.appendChild(FileName)
+
+
+
+    FileUploader = document.createElement('td')
+    FileUploader.innerText = (file.uploader) ? `${file.uploader.username}` : 'anon'
+    row.appendChild(FileUploader)
+
+    FileSize = document.createElement('td')
+    FileSize.innerText = `${file.size}`
+    row.appendChild(FileSize)
+
+    date = document.createElement('td')
+    date.innerText = `${file.date}`
+    row.appendChild(date)
+
+    table.appendChild(row)
+
+})
+
+  uptable.appendChild(table)
+}
 
 function afterSignIn() {
   

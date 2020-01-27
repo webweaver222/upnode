@@ -22,7 +22,12 @@ const DBfile = {
     },
 
     fetchRecent: async function (params) {
-       const files = await File.find().sort( { date: -1 }).limit(3)  
+
+        console.log(params)
+
+       const files = await File.find().sort( { [params.sort]: [params.order] }).limit(10)  
+        return files
+        
        
     }
 }

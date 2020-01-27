@@ -7,23 +7,12 @@ let flip = document.querySelector(".theflip").style;
 let upside = document.querySelector(".signup");
 let inside = document.querySelector(".signin");
 let back_arrow = document.querySelector(".back-arrow")
-var sortBy = 'date'
 
-document.querySelector(".switch").addEventListener("click", async function (e)  {
+document.querySelector(".switch").addEventListener("click", e => {
   document.querySelector("#flip-container").classList.toggle('out')
   document.querySelector("#uptable").classList.toggle('in')
-
-  let data = await fetch('/recentUploads', {
-    method: 'post',
-    headers: {
-      'Accept': 'application/json, text/plain, */*',
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      sort: sortBy
-    })
-  })
-
+  recentTableFetch()
+ 
 })
 
 
@@ -154,17 +143,7 @@ document.querySelector('#file-upload').addEventListener("change", e => {
   }
 });
 
-if(document.querySelector('.download-button')) {
-  document.querySelector(".download-button button").addEventListener("click", async function() {
-    
-     //const res = await fetch('/file', {
-     // method: 'POST',
-      //body: 
-    //}
-    //)
 
-  })
-}
 
 
 
