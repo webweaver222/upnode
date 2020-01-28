@@ -1,5 +1,6 @@
 # Upnode
-File sharing web service
+File sharing web service. Developed using MVC architectural pattern.
+Frontend - vanilla JS [ES6]
 
 # Motivation
 
