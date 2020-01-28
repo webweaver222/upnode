@@ -1,2 +1,2 @@
-# upnode
-File upload website
+# Upnode
+File sharing web service
