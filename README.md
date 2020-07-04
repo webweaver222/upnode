@@ -4,7 +4,7 @@ Frontend - vanilla JS [ES6]
 
 # Motivation
 
-Created only in learning purposes. 
+Created only for learning purposes. 
 
 # Framework
 
